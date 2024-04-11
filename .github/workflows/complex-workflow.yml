@@ -1,0 +1,27 @@
+on: push
+
+jobs:
+    job1_print_date:
+        name: First job on ubuntu
+        runs-on: ubuntu-latest
+        steps:
+          - name: Print the current date on ubuntu
+            run: echo "Ubuntu Latest Date: $(date)"
+    job2_print_date:
+        name: Second job on windows-latest
+        runs-on: windows-latest
+        steps:
+          - name: Print the current date on windows-latest
+            run: echo "windows-latest Latest Date: $(date)"
+    job3_print_date:
+        name: Third job on macos-latest
+        runs-on: macos-latest
+        steps:
+          - name: Print the current date on macos-latest
+            run: echo "macos-latest Latest Date: $(date)"
+    job4_print_date:
+        needs: [job1_print_date, job2_print_date, job3_print_date]
+        runs-on: rocky-latest
+        steps:
+          - name: Print the current date on rocky-latest
+            run: echo "rocky-latest Latest Date: $(date)"
